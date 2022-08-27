@@ -6,14 +6,14 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/miqtux/docker-lab.git', branch:'master'
+        cleanWs{}
+        git credentialsId:dockerhub, url:'https://github.com/miqtux/docker-lab.git', branch:'master'
       }
     }
     
       stage("Build image") {
             steps {
-                script {
-                    myapp = docker.build("841301/app-python:${env.BUILD_ID}")
+                sh 'docker image build -f 841301/app-python:latest .' 
                 }
             }
         }
