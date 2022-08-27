@@ -7,7 +7,7 @@ pipeline {
         stage('Checkout Source') {
             steps {
                 cleanWs{}
-                    git credentialsId:miqtux, url:'https://github.com/miqtux/docker-lab.git', branch:'master'
+                    git  url:'https://github.com/miqtux/docker-lab.git', branch:'master'
             }
         }
     
