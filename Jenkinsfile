@@ -3,6 +3,14 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Checkout Source') {
+            steps {
+                cleanWs{}
+                    git 'https://github.com/miqtux/docker-lab.git'
+            }
+        }
+    
         stage("Build image") {
             steps {
                 sh 'docker image build -f 841301/app-python:latest .' 
